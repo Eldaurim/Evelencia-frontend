@@ -8,6 +8,7 @@ function Header() {
       </h1>
       <Link to='/login'>Connexion</Link>
       <Link to='/signup'>S'inscrire</Link>
+      <Link to='/user'>Village</Link>
     </nav>
   )
 }

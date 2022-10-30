@@ -5,6 +5,7 @@ import App from './components/App'
 import Header from './components/Header/index'
 import Error from './components/Error/index'
 import Status from './pages/Status/index'
+import Login from './pages/Login'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -17,7 +18,9 @@ root.render(
         <Route exact path='/'>
           <App />
         </Route>
-        <Route exact path='/login'></Route>
+        <Route exact path='/login'>
+          <Login />
+        </Route>
         <Route exact path='/signup'></Route>
         <Route exact path='/account'></Route>
         <Route exact path='/user'></Route>
