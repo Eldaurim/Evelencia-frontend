@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles/index.css'
-import App from './components/App'
+import App from './pages/App'
 import Header from './components/Header/index'
 import Error from './components/Error/index'
 import Status from './pages/Status/index'
-import Login from './pages/Login'
+import Login from './components/Login'
+import Signup from './components/Signup'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -21,7 +22,9 @@ root.render(
         <Route exact path='/login'>
           <Login />
         </Route>
-        <Route exact path='/signup'></Route>
+        <Route exact path='/signup'>
+          <Signup />
+        </Route>
         <Route exact path='/account'></Route>
         <Route exact path='/user'></Route>
         <Route exact path='/status'>
