@@ -1,8 +1,10 @@
 import axios from 'axios'
+import { useState } from 'react'
 import env from 'react-dotenv'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import { Loader } from '../Loader/index'
 import './form.css'
 
 const LoginStyle = styled.div`
@@ -16,8 +18,10 @@ const LabelStyle = styled.label`
 function Login() {
   let history = useHistory()
   const { register, handleSubmit } = useForm()
+  const [isDataLoading, setDataLoading] = useState(false)
 
   const onSubmit = (e) => {
+    setDataLoading(true)
     axios
       .post(env.API_URL + '/login', {
         email: e.email,
@@ -26,9 +30,11 @@ function Login() {
       .then((res) => {
         const apiResponse = res.data
         localStorage.setItem('evelencia_login', JSON.stringify(apiResponse))
+        setDataLoading(false)
         history.push('/status')
       })
       .catch((err) => {
+        setDataLoading(false)
         // console.log(err)
       })
   }
@@ -49,6 +55,7 @@ function Login() {
           />
         </LabelStyle>
         <input className='button_form' type='submit' value='Connexion' />
+        {isDataLoading ? <Loader /> : null}
       </form>
     </LoginStyle>
   )

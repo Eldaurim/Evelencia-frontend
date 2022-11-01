@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const LogoStyle = styled(Link)`
+  text-decoration: none;
   margin-block: auto;
   font-size: 32px;
   color: #005aee;
@@ -29,7 +30,6 @@ function Header() {
   return (
     <HeaderStyle>
       <LogoStyle to='/'>Evelencia</LogoStyle>
-      <LinkStyle to='/user'>Village</LinkStyle>
       <NavStyle>
         <LinkStyle to='/login'>Connexion</LinkStyle>
         <LinkStyle to='/signup'>S'inscrire</LinkStyle>

@@ -1,8 +1,10 @@
 import axios from 'axios'
+import { useState } from 'react'
 import env from 'react-dotenv'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import { Loader } from '../Loader/index'
 import './form.css'
 
 const SignupStyle = styled.div`
@@ -16,7 +18,10 @@ const LabelStyle = styled.label`
 function Signup() {
   let history = useHistory()
   const { register, handleSubmit } = useForm()
+  const [isDataLoading, setDataLoading] = useState(false)
+
   const onSubmit = (e) => {
+    setDataLoading(true)
     axios
       .post(
         env.API_URL + '/signup',
@@ -32,9 +37,11 @@ function Signup() {
         }
       )
       .then((res) => {
+        setDataLoading(false)
         history.push('/status')
       })
       .catch((err) => {
+        setDataLoading(false)
         // console.log(err)
       })
   }
@@ -63,6 +70,7 @@ function Signup() {
           />
         </LabelStyle>
         <input className='button_form ' type='submit' value='Connexion' />
+        {isDataLoading ? <Loader /> : null}
       </form>
     </SignupStyle>
   )
