@@ -4,36 +4,14 @@ import env from 'react-dotenv'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import './form.css'
 
 const LoginStyle = styled.div`
   display: flex;
 `
 
-const FormStyle = styled.div`
-  margin: auto;
-`
-
 const LabelStyle = styled.label`
   margin-right: 15px;
-`
-
-const InputStyle = styled.input`
-  border-radius: 15px;
-  padding: 7px 15px;
-  border: 1px black solid;
-  text-decoration: none;
-`
-const ButtonStyle = styled.input`
-  border-radius: 15px;
-  padding: 7px 15px;
-  text-decoration: none;
-  border: none;
-  color: #fff;
-  background: #005aee;
-  &:hover {
-    cursor: pointer;
-    box-shadow: 2px 2px 20px #e6e6e6;
-  }
 `
 
 function Login() {
@@ -44,6 +22,7 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState(false)
   const { register, handleSubmit } = useForm()
   const onSubmit = (e) => {
+    console.log('button')
     setEmailValue(e.email)
     setPasswordValue(e.password)
     postLogin()
@@ -93,16 +72,21 @@ function Login() {
 
   return (
     <LoginStyle>
-      <FormStyle onSubmit={handleSubmit(onSubmit)}>
+      <form className='form_style' onSubmit={handleSubmit(onSubmit)}>
         <LabelStyle>
-          Email : <InputStyle type='email' {...register('email')} />
+          Email :{' '}
+          <input className='input_form' type='email' {...register('email')} />
         </LabelStyle>
         <LabelStyle>
-          Password : <InputStyle type='password' {...register('password')} />
+          Password :{' '}
+          <input
+            className='input_form'
+            type='password'
+            {...register('password')}
+          />
         </LabelStyle>
-        <ButtonStyle type='submit' value='Connexion' />
-      </FormStyle>
-      {error === true ? <div>{errorMessage}</div> : null}
+        <input className='button_form' type='submit' value='Connexion' />
+      </form>
     </LoginStyle>
   )
 }
