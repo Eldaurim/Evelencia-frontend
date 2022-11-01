@@ -1,15 +1,40 @@
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const LogoStyle = styled.div`
+  margin-block: auto;
+  font-size: 32px;
+  color: #005aee;
+`
+
+const HeaderStyle = styled.nav`
+  display: flex;
+  font-size: 22px;
+  font-weight: bold;
+`
+
+const LinkStyle = styled(Link)`
+  margin-block: auto;
+  color: black;
+  padding: 15px;
+  text-decoration: none;
+`
+
+const NavStyle = styled.div`
+  margin-left: auto;
+  margin-block: auto;
+`
 
 function Header() {
   return (
-    <nav>
-      <h1>
-        <Link to='/'>Evelencia</Link>
-      </h1>
-      <Link to='/login'>Connexion</Link>
-      <Link to='/signup'>S'inscrire</Link>
-      <Link to='/user'>Village</Link>
-    </nav>
+    <HeaderStyle>
+      <LogoStyle to='/'>Evelencia</LogoStyle>
+      <LinkStyle to='/user'>Village</LinkStyle>
+      <NavStyle>
+        <LinkStyle to='/login'>Connexion</LinkStyle>
+        <LinkStyle to='/signup'>S'inscrire</LinkStyle>
+      </NavStyle>
+    </HeaderStyle>
   )
 }
 

@@ -3,6 +3,34 @@ import axios from 'axios'
 import env from 'react-dotenv'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
+
+const SignupStyle = styled.div`
+  display: flex;
+`
+
+const FormStyle = styled.div`
+  margin: auto;
+`
+
+const LabelStyle = styled.label`
+  margin-right: 15px;
+`
+
+const InputStyle = styled.input`
+  border-radius: 15px;
+  padding: 7px 15px;
+  border: 1px black solid;
+  text-decoration: none;
+`
+const ButtonStyle = styled.input`
+  border-radius: 15px;
+  padding: 7px 15px;
+  text-decoration: none;
+  border: none;
+  color: #fff;
+  background: #005aee;
+`
 
 function Signup() {
   let history = useHistory()
@@ -63,20 +91,21 @@ function Signup() {
   // }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          Email :<input type='email' {...register('email')} />
-        </label>
-        <label>
-          Password :<input type='password' {...register('password')} />
-        </label>
-        <label>
-          Username :<input type='username' {...register('username')} />
-        </label>
-        <input type='submit' value='Connexion' />
-      </form>
-    </div>
+    <SignupStyle>
+      <FormStyle onSubmit={handleSubmit(onSubmit)}>
+        <LabelStyle>
+          Email : <InputStyle type='email' {...register('email')} />
+        </LabelStyle>
+        <LabelStyle>
+          Password : <InputStyle type='password' {...register('password')} />
+        </LabelStyle>
+        <LabelStyle>
+          Username : <InputStyle type='username' {...register('username')} />
+        </LabelStyle>
+        <ButtonStyle type='submit' value='Connexion' />
+      </FormStyle>
+      {error === true ? <div>{errorMessage}</div> : null}
+    </SignupStyle>
   )
 }
 
