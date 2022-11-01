@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const LogoStyle = styled.div`
+const LogoStyle = styled(Link)`
   margin-block: auto;
   font-size: 32px;
   color: #005aee;
