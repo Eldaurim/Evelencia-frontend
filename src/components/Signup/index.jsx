@@ -30,6 +30,10 @@ const ButtonStyle = styled.input`
   border: none;
   color: #fff;
   background: #005aee;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 20px #e6e6e6;
+  }
 `
 
 function Signup() {
